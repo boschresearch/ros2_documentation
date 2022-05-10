@@ -51,6 +51,7 @@ By invoking ``spin()`` of the Executor instance, the current thread starts query
 In order not to counteract the QoS settings of the middleware, an incoming message is not stored in a queue on the Client Library layer but kept in the middleware until it is taken for processing by a callback function.
 (This is a crucial difference to ROS 1.)
 A *wait set* is used to inform the Executor about available messages on the middleware layer, with one binary flag per queue.
+The *wait set* is also used to detect when timers expire.
 
 .. image:: images/executors_basic_principle.png
 
@@ -102,11 +103,12 @@ Callback groups
 
 The rclcpp allows organizing the callbacks of a node in groups.
 Such a *callback group* can be created by the ``create_callback_group`` function of the Node class.
+The callback group must be stored throughout execution of the node (eg. as a class member), or otherwise the executor won't be able to trigger the callbacks.
 Then, this callback group can be specified when creating a subscription, timer, etc. - for example by the subscription options:
 
 .. code-block:: cpp
 
-   auto my_callback_group = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+   my_callback_group = create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
 
    rclcpp::SubscriptionOptions options;
    options.callback_group = my_callback_group;
@@ -139,12 +141,13 @@ However, if the processing time of some callbacks is longer, messages and events
 The wait set mechanism reports only very little information about these queues to the Executor.
 In detail, it only reports whether there are any messages for a certain topic or not.
 The Executor uses this information to process the messages (including services and actions) in a round-robin fashion - but not in FIFO order.
-In addition, it prioritizes all timer events over the messages.
 The following flow diagram visualizes this scheduling semantics.
 
 .. image:: images/executors_scheduling_semantics.png
 
 This semantics was first described in a `paper by Casini et al. at ECRTS 2019 <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_.
+(Note: The paper also explains that timer events are prioritized over all other messages. `This prioritization was removed in Eloquent. <https://github.com/ros2/rclcpp/pull/841>`_)
+
 
 Outlook
 -------

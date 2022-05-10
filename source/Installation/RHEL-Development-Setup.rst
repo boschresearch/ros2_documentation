@@ -48,6 +48,10 @@ Install development tools and ROS tools
      patch \
      python3-colcon-common-extensions \
      python3-pip \
+     python3-pydocstyle \
+     python3-pytest \
+     python3-pytest-repeat \
+     python3-pytest-rerunfailures \
      python3-rosdep \
      python3-setuptools \
      python3-vcstool \
@@ -55,7 +59,7 @@ Install development tools and ROS tools
    # install some pip packages needed for testing and
    # not available as RPMs
    python3 -m pip install -U --user \
-     flake8-blind-except \
+     flake8-blind-except==0.1.1 \
      flake8-builtins \
      flake8-class-newline \
      flake8-comprehensions \
@@ -63,12 +67,7 @@ Install development tools and ROS tools
      flake8-docstrings \
      flake8-import-order \
      flake8-quotes \
-     mypy==0.761 \
-     pydocstyle \
-     pytest-repeat \
-     pytest-rerunfailures \
-     pytest \
-     setuptools
+     mypy==0.931
 
 .. _Rolling_rhel-dev-get-ros2-code:
 
@@ -93,12 +92,12 @@ Install dependencies using rosdep
 
    sudo rosdep init
    rosdep update
-   rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr ignition-cmake2 ignition-math6 rti-connext-dds-5.3.1 urdfdom_headers pydocstyle python3-mypy python3-babeltrace python3-lttng asio"
+   rosdep install --from-paths src --ignore-src -y --skip-keys "asio cyclonedds fastcdr fastrtps ignition-cmake2 ignition-math6 liborocos-kdl-dev pydocstyle python3-babeltrace python3-lttng python3-mypy python3-pykdl rti-connext-dds-6.0.1 urdfdom_headers"
 
 Install additional DDS implementations (optional)
 -------------------------------------------------
 
-If you would like to use another DDS or RTPS vendor besides the default, Cyclone DDS, you can find instructions :doc:`here <DDS-Implementations>`.
+If you would like to use another DDS or RTPS vendor besides the default, you can find instructions :doc:`here <DDS-Implementations>`.
 
 Build the code in the workspace
 -------------------------------
@@ -160,7 +159,7 @@ Continue with the :doc:`tutorials and demos <../Tutorials>` to configure your en
 
 Additional RMW implementations (optional)
 -----------------------------------------
-The default middleware that ROS 2 uses is ``Cyclone DDS``, but the middleware (RMW) can be replaced at runtime.
+The default middleware that ROS 2 uses is ``Fast DDS``, but the middleware (RMW) can be replaced at runtime.
 See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` on how to work with multiple RMWs.
 
 Alternate compilers

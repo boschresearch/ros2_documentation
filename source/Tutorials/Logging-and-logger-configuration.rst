@@ -91,7 +91,7 @@ Logger level configuration: programmatically
 After 10 iterations the level of the logger will be set to ``DEBUG``, which will cause additional messages to be logged.
 
 Some of these debug messages cause additional functions/expressions to be evaluated, which were previously skipped as ``DEBUG`` log calls were not enabled.
-See `the source code <https://github.com/ros2/demos/blob/master/logging_demo/src/logger_usage_component.cpp>`__ of the demo for further explanation of the calls used, and see the rclcpp logging documentation for a full list of supported logging calls.
+See `the source code <https://github.com/ros2/demos/blob/{REPOS_FILE_BRANCH}/logging_demo/src/logger_usage_component.cpp>`__ of the demo for further explanation of the calls used, and see the rclcpp logging documentation for a full list of supported logging calls.
 
 Logger level configuration: externally
 --------------------------------------
@@ -170,16 +170,12 @@ Restart the demo including the following command line argument:
 This configures the default severity for any unset logger to the debug severity level.
 You should see debug output from loggers from the demo itself and from the ROS 2 core.
 
-As of the Galactic ROS 2 release, the severity level for individual loggers can be configured from the command-line.
+The severity level for individual loggers can be configured from the command-line.
 Restart the demo including the following command line arguments:
 
-.. tabs::
+.. code-block:: bash
 
-  .. group-tab:: Galactic and newer
-
-    .. code-block:: bash
-
-       ros2 run logging_demo logging_demo_main --ros-args --log-level logger_usage_demo:=debug
+   ros2 run logging_demo logging_demo_main --ros-args --log-level logger_usage_demo:=debug
 
 
 Console output formatting

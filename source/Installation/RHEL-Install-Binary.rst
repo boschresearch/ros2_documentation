@@ -78,12 +78,12 @@ Set your rosdistro according to the release you downloaded.
 
 .. code-block:: bash
 
-       rosdep install --from-paths ~/ros2_{DISTRO}/ros2-linux/share --ignore-src -y --skip-keys "cyclonedds fastcdr fastrtps ignition-cmake2 ignition-math6 rti-connext-dds-5.3.1 urdfdom_headers pydocstyle python3-mypy python3-babeltrace python3-lttng"
+       rosdep install --from-paths ~/ros2_{DISTRO}/ros2-linux/share --ignore-src -y --skip-keys "asio cyclonedds fastcdr fastrtps ignition-cmake2 ignition-math6 liborocos-kdl-dev pydocstyle python3-babeltrace python3-lttng python3-mypy python3-pykdl rti-connext-dds-6.0.1 urdfdom_headers"
 
 Install additional DDS implementations (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you would like to use another DDS or RTPS vendor besides the default, Eclipse Cyclone DDS, you can find instructions :doc:`here <DDS-Implementations>`.
+If you would like to use another DDS or RTPS vendor besides the default, you can find instructions :doc:`here <DDS-Implementations>`.
 
 Environment setup
 -----------------
@@ -124,7 +124,7 @@ Continue with the :doc:`tutorials and demos <../Tutorials>` to configure your en
 
 Additional RMW implementations (optional)
 -----------------------------------------
-The default middleware that ROS 2 uses is ``Cyclone DDS``, but the middleware (RMW) can be replaced at runtime.
+The default middleware that ROS 2 uses is ``Fast DDS``, but the middleware (RMW) can be replaced at runtime.
 See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` on how to work with multiple RMWs.
 
 Troubleshooting

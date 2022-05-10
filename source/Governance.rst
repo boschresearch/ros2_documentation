@@ -208,16 +208,17 @@ Client Libraries
 * Resources:
 
  * Meeting invite group: `ros-client-libraries-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-client-libraries-working-group-invites>`_
- * `Meeting minutes and agendas <https://docs.google.com/document/d/1UXWaEkT6ji0Z0uTtJJSni5Y6fiopM9qOOzv4ldeNaAM/edit>`_
+ * `Meeting minutes and agendas <https://docs.google.com/document/d/1MAMQisfbITOR4eDyCBhTEaFJ3QBNW38S7Z7RpBBSSvg/edit>`_
  * Working group charter: https://github.com/ros2-client-libraries-wg/community
  * Discourse tag: `wg-client-libraries <https://discourse.ros.org/tags/wg-client-libraries>`_
 
 Control
 ^^^^^^^
 
-* Lead(s): Bence Magyar, Karsten Knese
+* Lead(s): Bence Magyar
 * Resources:
 
+ * Webite link: https://control.ros.org
  * Meeting invite group `ros-control-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-control-working-group-invites>`_
  * Discourse tag: `wg-ros2-control <https://discourse.ros.org/tags/wg-ros2-control>`_
 

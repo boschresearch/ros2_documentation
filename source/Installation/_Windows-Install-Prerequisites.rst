@@ -31,8 +31,8 @@ Open a Command Prompt and type the following to install them via Chocolatey:
 Install OpenSSL
 ^^^^^^^^^^^^^^^
 
-Download the *Win64 OpenSSL v1.1.1L* OpenSSL installer from `this page <https://slproweb.com/products/Win32OpenSSL.html>`__.
-Scroll to the bottom of the page and download *Win64 OpenSSL v1.1.1L*.
+Download the *Win64 OpenSSL v1.1.1n* OpenSSL installer from `this page <https://slproweb.com/products/Win32OpenSSL.html>`__.
+Scroll to the bottom of the page and download *Win64 OpenSSL v1.1.1n*.
 Don't download the Win32 or Light versions.
 
 Run the installer with default parameters, as the following commands assume you used the default installation directory.
@@ -70,7 +70,7 @@ Make sure that no C++ CMake tools are installed by unselecting them in the list 
 Install additional DDS implementations (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you would like to use another DDS or RTPS vendor besides the default, Eclipse Cyclone DDS, you can find instructions :doc:`here <DDS-Implementations>`.
+If you would like to use another DDS or RTPS vendor besides the default, Fast DDS, you can find instructions :doc:`here <DDS-Implementations>`.
 
 Install OpenCV
 ^^^^^^^^^^^^^^
@@ -105,7 +105,7 @@ You will need to append the CMake bin folder ``C:\Program Files\CMake\bin`` to y
 Please download these packages from `this <https://github.com/ros2/choco-packages/releases/latest>`__ GitHub repository.
 
 * asio.1.12.1.nupkg
-* bullet.2.89.0.nupkg
+* bullet.3.17.nupkg
 * cunit.2.1.3.nupkg
 * eigen-3.3.4.nupkg
 * tinyxml-usestl.2.6.2.nupkg
@@ -119,12 +119,17 @@ Once these packages are downloaded, open an administrative shell and execute the
 
 Please replace ``<PATH\TO\DOWNLOADS>`` with the folder you downloaded the packages to.
 
-You must also install some additional python dependencies:
+First upgrade pip and setuptools:
 
 .. code-block:: bash
 
-   python -m pip install -U catkin_pkg cryptography empy ifcfg importlib-metadata lark-parser lxml matplotlib netifaces numpy opencv-python PyQt5 pip pillow psutil pycairo pydot pyparsing pyyaml rosdistro setuptools
+   python -m pip install -U pip setuptools==59.6.0
 
+Now install some additional python dependencies:
+
+.. code-block:: bash
+
+   python -m pip install -U catkin_pkg cryptography empy importlib-metadata lark==1.1.1 lxml matplotlib netifaces numpy opencv-python PyQt5 pillow psutil pycairo pydot pyparsing==2.4.7 pyyaml rosdistro
 
 Install Qt5
 ^^^^^^^^^^^

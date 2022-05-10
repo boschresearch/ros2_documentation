@@ -16,7 +16,8 @@ System requirements
 -------------------
 The current Debian-based target platforms for {DISTRO_TITLE_FULL} are:
 
-- Tier 1: Ubuntu Linux - Focal Fossa (20.04) 64-bit
+- Tier 1: Ubuntu Linux - Jammy (22.04) 64-bit
+- Tier 3: Ubuntu Linux - Focal (20.04) 64-bit
 - Tier 3: Debian Linux - Bullseye (11) 64-bit
 
 
@@ -52,31 +53,23 @@ Install development tools and ROS tools
      git \
      python3-colcon-common-extensions \
      python3-flake8 \
+     python3-flake8-blind-except \
+     python3-flake8-builtins \
+     python3-flake8-class-newline \
+     python3-flake8-comprehensions \
+     python3-flake8-deprecated \
+     python3-flake8-docstrings \
+     python3-flake8-import-order \
+     python3-flake8-quotes \
      python3-pip \
+     python3-pytest \
      python3-pytest-cov \
+     python3-pytest-repeat \
+     python3-pytest-rerunfailures \
      python3-rosdep \
      python3-setuptools \
      python3-vcstool \
      wget
-   # install some pip packages needed for testing
-   python3 -m pip install -U \
-     flake8-blind-except \
-     flake8-builtins \
-     flake8-class-newline \
-     flake8-comprehensions \
-     flake8-deprecated \
-     flake8-docstrings \
-     flake8-import-order \
-     flake8-quotes \
-     pytest-repeat \
-     pytest-rerunfailures \
-     pytest
-
-Ubuntu 18.04 is not an officially supported platform, but may still work.  You'll need at least the following additional dependencies:
-
-.. code-block:: bash
-
-   python3 -m pip install -U importlib-metadata importlib-resources
 
 .. _Rolling_linux-dev-get-ros2-code:
 
@@ -101,14 +94,14 @@ Install dependencies using rosdep
 
    sudo rosdep init
    rosdep update
-   rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
+   rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 
 .. include:: _rosdep_Linux_Mint.rst
 
 Install additional DDS implementations (optional)
 -------------------------------------------------
 
-If you would like to use another DDS or RTPS vendor besides the default, Eclipse Cyclone DDS, you can find instructions :doc:`here <DDS-Implementations>`.
+If you would like to use another DDS or RTPS vendor besides the default, you can find instructions :doc:`here <DDS-Implementations>`.
 
 Build the code in the workspace
 -------------------------------
@@ -174,7 +167,7 @@ The ROS 1 bridge can connect topics from ROS 1 to ROS 2 and vice-versa. See the 
 
 Additional RMW implementations (optional)
 -----------------------------------------
-The default middleware that ROS 2 uses is ``Cyclone DDS``, but the middleware (RMW) can be replaced at runtime.
+The default middleware that ROS 2 uses is ``Fast DDS``, but the middleware (RMW) can be replaced at runtime.
 See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` on how to work with multiple RMWs.
 
 Alternate compilers

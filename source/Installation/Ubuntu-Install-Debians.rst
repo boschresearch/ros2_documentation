@@ -9,7 +9,7 @@ Installing ROS 2 via Debian Packages
    :depth: 2
    :local:
 
-Debian packages for ROS 2 {DISTRO_TITLE_FULL} are currently available for Ubuntu Focal.
+Debian packages for ROS 2 {DISTRO_TITLE_FULL} are currently available for Ubuntu Jammy.
 The Rolling Ridley distribution will change target platforms from time to time as new platforms are selected for development.
 The target platforms are defined in `REP 2000 <https://github.com/ros-infrastructure/rep/blob/master/rep-2000.rst>`__
 Most people will want to use a stable ROS distribution.
@@ -19,7 +19,7 @@ Resources
 
 * Status Page:
 
-  * ROS 2 {DISTRO_TITLE} (Ubuntu Focal): `amd64 <http://repo.ros2.org/status_page/ros_{DISTRO}_default.html>`__\ , `arm64 <http://repo.ros2.org/status_page/ros_{DISTRO}_ufv8.html>`__
+  * ROS 2 {DISTRO_TITLE} (Ubuntu Jammy): `amd64 <http://repo.ros2.org/status_page/ros_{DISTRO}_default.html>`__\ , `arm64 <http://repo.ros2.org/status_page/ros_{DISTRO}_ufv8.html>`__
 * `Jenkins Instance <http://build.ros2.org/>`__
 * `Repositories <http://repo.ros2.org>`__
 
@@ -105,7 +105,7 @@ The ROS 1 bridge can connect topics from ROS 1 to ROS 2 and vice-versa. See the 
 
 Additional RMW implementations (optional)
 -----------------------------------------
-The default middleware that ROS 2 uses is ``Cyclone DDS``, but the middleware (RMW) can be replaced at runtime.
+The default middleware that ROS 2 uses is ``Fast DDS``, but the middleware (RMW) can be replaced at runtime.
 See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` on how to work with multiple RMWs.
 
 Troubleshooting
@@ -122,3 +122,13 @@ have already installed from binaries, run the following command:
 .. code-block:: bash
 
   sudo apt remove ~nros-{DISTRO}-* && sudo apt autoremove
+
+You may also want to remove the repository:
+
+.. code-block:: bash
+
+  sudo rm /etc/apt/sources.list.d/ros2.list
+  sudo apt update
+  sudo apt autoremove
+  # Consider upgrading for packages previously shadowed.
+  sudo apt upgrade

@@ -287,6 +287,34 @@ When filing an issue please make sure to:
   - Trying with a different RMW implementation.
     See `this page <../How-To-Guides/Working-with-multiple-RMW-implementations>` for how to do that.
 
+Branches
+^^^^^^^^
+
+.. note::
+    These are just guidelines.
+    It is up to the package maintainer to choose branch names that match their own workflow.
+
+It is good practice to have **separate branches** in a package's source repository for each ROS distribution it is targeting.
+These branches are typically named after the distribution they target.
+For example, a ``humble`` branch for development targeted specifically at the Humble distribution.
+
+Releases are also made from these branches, targeting the appropriate distribution.
+Development targeted at a specific ROS distribution can happen on the appropriate branch.
+For example: Development commits targeting ``foxy`` are made to the ``foxy`` branch, and package releases for ``foxy`` are made from that same branch.
+
+.. note::
+    This requires the package maintainers to perform backports or forwardports as appropriate to keep all branches up to date with features.
+    The maintainers must also perform general maintenance (bug fixes, etc.) on all branches from which package releases are still made.
+
+    For example, if a feature is merged into the Rolling-specific branch (e.g. ``rolling`` or ``main``), and that feature is also appropriate
+    to the Galactic distribution (does not break API, etc.), then it is good practice to backport the feature to the Galactic-specific branch.
+
+    The maintainers may make releases for those older distributions if there are new features or bug fixes available.
+
+**What about** ``main`` **and** ``rolling`` **?**
+
+``main`` typically targets :doc:`Rolling <../Releases/Release-Rolling-Ridley>` (and so, the next unreleased ROS distribution), though the maintainers may decide to develop and release from a ``rolling`` branch instead.
+
 Pull requests
 ^^^^^^^^^^^^^
 
@@ -623,14 +651,10 @@ Additionally, we test all pull requests against these platforms before merging.
 This is the current set of target platforms and architectures, though it evolves overtime:
 
 
-* Ubuntu 20.04 Focal
+* Ubuntu 22.04 Jammy
 
   * amd64
   * aarch64
-
-* macOS 10.14 Mojave
-
-  * amd64
 
 * Windows 10
 
@@ -644,7 +668,6 @@ There are several categories of jobs on the buildfarm:
   * ci_linux: build + test the code on Ubuntu Xenial
   * ci_linux-aarch64: build + test the code on Ubuntu Xenial on an ARM 64-bit machine (aarch64)
   * ci_linux_coverage: build + test + generation of test coverage
-  * ci_osx: build + test the code on MacOS 10.12
   * ci_windows: build + test the code on Windows 10
   * ci_launcher: trigger all the jobs listed above
 
@@ -654,21 +677,18 @@ There are several categories of jobs on the buildfarm:
 
     * nightly_linux_debug
     * nightly_linux-aarch64_debug
-    * nightly_osx_debug
     * nightly_win_deb
 
   * Release: build + test the code with CMAKE_BUILD_TYPE=Release
 
     * nightly_linux_release
     * nightly_linux-aarch64_release
-    * nightly_osx_release
     * nightly_win_rel
 
   * Repeated: build then run each test up to 20 times or until failed (aka flakiness hunter)
 
     * nightly_linux_repeated
     * nightly_linux-aarch64_repeated
-    * nightly_osx_repeated
     * nightly_win_rep
 
   * Coverage:
@@ -681,7 +701,6 @@ There are several categories of jobs on the buildfarm:
 * packaging (run every night; result is bundled into an archive):
 
   * packaging_linux
-  * packaging_osx
   * packaging_windows
 
 Two additional build farms support the ROS / ROS 2 ecosystem by providing building of source and
