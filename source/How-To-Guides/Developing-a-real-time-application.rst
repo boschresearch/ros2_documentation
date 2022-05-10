@@ -9,7 +9,7 @@ This How-To-Guide gives an overview how to develop a real-time applications. Sev
 
 Real-Time Linux
 ---------------
-`Real-Time Linux <https://wiki.linuxfoundation.org/realtime/start>`, aka (using the PREEMPT_RT kernel patch) has been in the making for long time and has been `merged mainline Linux 5.15 <https://lwn.net/Articles/867919/>`___. This patch reduces the context switch costs in the Linux scheduler. They are being analyzed for various architectures by the [OSADL organization](https://www.osadl.org/OSADL-QA-Farm-Real-time.linux-real-time.0.html). 
+`Real-Time Linux <https://wiki.linuxfoundation.org/realtime/start>`_, aka (using the PREEMPT_RT kernel patch) has been in the making for long time and has been `merged in mainline Linux 5.15 <https://lwn.net/Articles/867919/>`_. This patch reduces the context switch costs in the Linux scheduler. They are being analyzed for various architectures by the `OSADL organization <https://www.osadl.org/OSADL-QA-Farm-Real-time.linux-real-time.0.html>`_. 
 
 
 - [Link to tutorial, how to install real-time Linux](https://docs.ros.org/en/rolling/Tutorials/Building-Realtime-rt_preempt-kernel-for-ROS-2.html)
