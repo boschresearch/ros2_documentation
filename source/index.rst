@@ -17,6 +17,7 @@ ROS 2 Documentation
    Concepts
    Contact
    The-ROS2-Project
+   Package-Index
    Related-Projects
    Glossary
    Citations
